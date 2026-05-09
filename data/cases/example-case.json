@@ -1,1 +1,17 @@
+{
+  "case_id": "example-case-0001",
+  "created_at": "2026-05-09T00:00:00Z",
+  "domain": "example-domain",
+  "input_context": "Describe the situation or prompt given to the AI.",
+  "ai_output": "Paste the AI output here.",
+  "ai_confidence": 0.99,
+  "ai_reasoning_summary": "Why the AI appeared logically correct.",
+  "human_override": "What the human expert decided instead.",
+  "human_rationale": "Why the human expert was right.",
+  "failure_type": ["missing_context"],
+  "severity": "medium",
+  "final_outcome": "What the correct result was.",
+  "reviewer_role": "domain expert",
+  "tags": ["example"]
+}
 
