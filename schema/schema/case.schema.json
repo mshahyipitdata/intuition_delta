@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://intuitiondelta.org/schema/case.schema.json",
+  "title": "Intuition Delta Case",
+  "type": "object",
+  "required": [
+    "case_id",
+    "created_at",
+    "domain",
+    "input_context",
+    "ai_output",
+    "human_override",
+    "human_rationale",
+    "failure_type",
+    "severity",
+    "final_outcome",
+    "reviewer_role",
+    "tags",
+    "source_name",
+    "source_url",
+    "source_type",
+    "is_public_seed",
+    "evidence_status",
+    "example_granularity"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "domain": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_context": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ai_output": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ai_confidence": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "ai_reasoning_summary": {
+      "type": ["string", "null"]
+    },
+    "human_override": {
+      "type": "string",
+      "minLength": 1
+    },
+    "human_rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "failure_type": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "hallucination",
+          "missing_context",
+          "bad_assumption",
+          "incorrect_inference",
+          "expertise_gap",
+          "stale_knowledge",
+          "anchoring_error",
+          "ungrounded_claim",
+          "real_world_chat_failure",
+          "diagnostic_error",
+          "reasoning_error",
+          "factual_error"
+        ]
+      }
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "final_outcome": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer_role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": ["benchmark", "dataset", "paper", "real_chat_benchmark", "real_world"]
+    },
+    "is_public_seed": {
+      "type": "boolean"
+    },
+    "evidence_status": {
+      "type": "string",
+      "enum": ["source-confirmed", "example-confirmed", "field-confirmed"]
+    },
+    "example_granularity": {
+      "type": "string",
+      "enum": ["dataset-level", "example-level", "incident-level"]
+    },
+    "license_note": {
+      "type": ["string", "null"]
+    },
+    "notes": {
+      "type": ["string", "null"]
+    }
+  },
+  "additionalProperties": true
+}
